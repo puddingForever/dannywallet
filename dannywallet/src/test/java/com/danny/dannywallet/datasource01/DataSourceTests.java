@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,19 +21,15 @@ import lombok.extern.log4j.Log4j;
 public class DataSourceTests {
 	
 	
-	@Setter(onMethod_ = { @Autowired })
-	 private DataSource dataSource;
+	@Setter(onMethod_ = {@Autowired})
+	private SqlSessionTemplate sqlSession;
 	
-	//데이터풀의 커넥션 가져오기 완료
 	@Test
-	public void testConnection() {
-		try {
-			Connection conn = dataSource.getConnection();
-			log.info(conn);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void checkMybatis() {
+		
+		Connection conn = sqlSession.getConnection();
+		log.info(conn); // 커넥션풀에서 커넥션 제대로 가져왔는지
+		log.info(sqlSession); // sqlsession 제대로 작동하는지 
+		
 	}
-
 }
