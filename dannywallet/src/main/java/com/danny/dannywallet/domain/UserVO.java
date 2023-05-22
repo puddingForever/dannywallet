@@ -14,11 +14,13 @@ public class UserVO {
 	private long user_idx;
 	private String user_id;
 	private String user_name;
-	private String user_email;
 	private String user_password;
+	private String user_email;
+
 
 	
 	//비밀번호 확인용
 	private String user_pw_confirm;
-
+	//로그인 유무 
+	private boolean userLogin;
 }

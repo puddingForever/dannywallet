@@ -1,6 +1,7 @@
 package com.danny.dannywallet.domain;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 
@@ -16,7 +17,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class TransactionsVO {
 	private long tran_idx;
-	private Date tran_date;
+	private Timestamp tran_date;
 	private long tran_total;
 	private long tran_expense;
 	private long tran_remain;
