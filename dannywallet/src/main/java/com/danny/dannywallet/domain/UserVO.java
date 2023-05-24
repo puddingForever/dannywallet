@@ -1,5 +1,7 @@
 package com.danny.dannywallet.domain;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ public class UserVO {
 	private String user_name;
 	private String user_password;
 	private String user_email;
+	private Date user_regDate;
 
 
 	
