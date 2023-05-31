@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.danny.dannywallet.mapper.GroupMapper">
+
+     <!-- 가게부 전체 보여주기 -->
+     <select id="selectGroupList" resultType="com.danny.dannywallet.domain.GroupVO">
+     	SELECT a1.group_idx,a1.group_name,a2.user_idx
+          FROM danny.group_table a1, users_table a2
+         WHERE a1.group_user_idx = a2.user_idx
+     </select>
+
+    <!-- 가게부 등록 ,-->
+    <insert id="insertGroup" parameterType="com.danny.dannywallet.domain.GroupVO">
+     <selectKey keyProperty="group_idx" order="BEFORE">
+     	SELECT danny.group_seq.nextval from dual
+     </selectKey>
+     INSERT INTO danny.group_table
+          VALUES (#{group_idx},#{group_name},#{group_user_idx})    
+    </insert>
+    
+    <!-- 가게부 이름 수정  -->
+	<update id="updateGroup" parameterType="com.danny.dannywallet.domain.GroupVO">
+			UPDATE danny.group_table
+			   SET group_name = #{group_name}
+			 WHERE group_idx = #{group_idx}
+	</update>
+
+	<!-- 가게부 삭제  -->
+     <delete id="deleteGroup" parameterType="com.danny.dannywallet.domain.GroupVO">
+     			DELETE danny.group_table
+     			WHERE group_idx = #{group_idx}
+     </delete>
+
+
+	
+	
+</mapper> 
